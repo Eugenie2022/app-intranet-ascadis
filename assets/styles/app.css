@@ -9,3 +9,7 @@ body {
 .marge {
     margin: 0.5rem;
 }
+
+.padd {
+    padding: 1rem 2rem;
+}
