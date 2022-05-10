@@ -5,3 +5,7 @@ body {
 .bg {
     background-color: #2771A5;
 }
+
+.marge {
+    margin: 0.5rem;
+}
