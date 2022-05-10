@@ -24,9 +24,13 @@ class Role
     #[ORM\OneToMany(mappedBy: 'habilitation', targetEntity: Utilisateur::class)]
     private $utilisateurs;
 
+    #[ORM\OneToMany(mappedBy: 'habilitation', targetEntity: AccesPortail::class)]
+    private $accesPortails;
+
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();
+        $this->accesPortails = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -82,6 +86,36 @@ class Role
             // set the owning side to null (unless already changed)
             if ($utilisateur->getHabilitation() === $this) {
                 $utilisateur->setHabilitation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AccesPortail>
+     */
+    public function getAccesPortails(): Collection
+    {
+        return $this->accesPortails;
+    }
+
+    public function addAccesPortail(AccesPortail $accesPortail): self
+    {
+        if (!$this->accesPortails->contains($accesPortail)) {
+            $this->accesPortails[] = $accesPortail;
+            $accesPortail->setHabilitation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAccesPortail(AccesPortail $accesPortail): self
+    {
+        if ($this->accesPortails->removeElement($accesPortail)) {
+            // set the owning side to null (unless already changed)
+            if ($accesPortail->getHabilitation() === $this) {
+                $accesPortail->setHabilitation(null);
             }
         }
 
