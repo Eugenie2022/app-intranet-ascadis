@@ -16,12 +16,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for favori in favoris %}
+                {% if app.user %}
+                    {% for favori in favoris %}
+                            <tr>
+                                <th scope="row">{{ favori.nom }}</th>
+                                <td><a href="{{ favori.url }}" target="_blank">{{ favori.url }}</a></td>
+                            </tr>
+                    {% endfor %}
+                {% else %}
                     <tr>
-                        <th scope="row">{{ favori.nom }}</th>
-                        <td><a href="{{ favori.url }}" target="_blank">{{ favori.url }}</a></td>
+                        <th scope="row">Pas de favoris</th>
                     </tr>
-                {% endfor %}
+                {% endif %}
                 </tbody>
             </table>
         </div>
