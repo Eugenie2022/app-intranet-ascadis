@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/acces/portail')]
+#[Route('/portail')]
 class AccesPortailController extends AbstractController
 {
     #[Route('/', name: 'app_acces_portail_index', methods: ['GET'])]
