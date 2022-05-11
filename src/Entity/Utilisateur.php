@@ -26,9 +26,6 @@ class Utilisateur implements UserInterface , PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
-    #[ORM\ManyToOne(targetEntity: Role::class, inversedBy: 'utilisateurs')]
-    private $habilitation;
-
     #[ORM\Column(type: 'string', length: 255)]
     private $password;
 
@@ -73,8 +70,6 @@ class Utilisateur implements UserInterface , PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -93,18 +88,6 @@ class Utilisateur implements UserInterface , PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function getHabilitation(): ?Role
-    {
-        return $this->habilitation;
-    }
-
-    public function setHabilitation(?Role $habilitation): self
-    {
-        $this->habilitation = $habilitation;
-
-        return $this;
     }
 
     public function getPassword(): ?string

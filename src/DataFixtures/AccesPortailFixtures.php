@@ -4,10 +4,9 @@ namespace App\DataFixtures;
 
 use App\Entity\AccesPortail;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class AccesPortailFixtures extends Fixture implements DependentFixtureInterface
+class AccesPortailFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
@@ -16,7 +15,7 @@ class AccesPortailFixtures extends Fixture implements DependentFixtureInterface
         $laposte->setLogin('facteur');
         $laposte->setPassword('facteur');
         $laposte->setDescription('Accès à la poste');
-        $laposte->setHabilitation($this->getReference(RoleFixtures::ROLE_USER));
+        $laposte->setRole('ROLE_USER');
         $manager->persist($laposte);
 
 
@@ -25,7 +24,7 @@ class AccesPortailFixtures extends Fixture implements DependentFixtureInterface
         $facebook->setLogin('facebook');
         $facebook->setPassword('facebook');
         $facebook->setDescription('Accès au compte facebook d\'ascadis');
-        $facebook->setHabilitation($this->getReference(RoleFixtures::ROLE_DIRECTION));
+        $facebook->setRole('ROLE_USER');
         $manager->persist($facebook);
 
         $banque = new AccesPortail();
@@ -33,20 +32,13 @@ class AccesPortailFixtures extends Fixture implements DependentFixtureInterface
         $banque->setLogin('banque');
         $banque->setPassword('banque123');
         $banque->setDescription('Accès au compte de l\entreprise');
-        $banque->setHabilitation($this->getReference(RoleFixtures::ROLE_ADMIN));
+        $banque->setRole('ROLE_DIRECTION');
         $manager->persist($banque);
 
 
         $manager->flush();
 
 
-    }
-
-    public function getDependencies()
-    {
-        return [
-            RoleFixtures::class,
-        ];
     }
 }
 

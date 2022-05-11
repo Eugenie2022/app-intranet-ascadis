@@ -25,9 +25,8 @@ class AccesPortail
     #[ORM\Column(type: 'text', nullable: true)]
     private $description;
 
-    #[ORM\ManyToOne(targetEntity: Role::class, inversedBy: 'accesPortails')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $habilitation;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $role;
 
     public function getId(): ?int
     {
@@ -82,15 +81,19 @@ class AccesPortail
         return $this;
     }
 
-    public function getHabilitation(): ?Role
+    /**
+     * @return mixed
+     */
+    public function getRole()
     {
-        return $this->habilitation;
+        return $this->role;
     }
 
-    public function setHabilitation(?Role $habilitation): self
+    /**
+     * @param mixed $role
+     */
+    public function setRole($role): void
     {
-        $this->habilitation = $habilitation;
-
-        return $this;
+        $this->role = $role;
     }
 }

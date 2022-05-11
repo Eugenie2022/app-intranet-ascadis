@@ -24,6 +24,7 @@ class AccesPortailType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => AccesPortail::class,
+
         ]);
     }
 }

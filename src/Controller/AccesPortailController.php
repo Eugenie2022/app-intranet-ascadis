@@ -16,8 +16,15 @@ class AccesPortailController extends AbstractController
     #[Route('/', name: 'app_acces_portail_index', methods: ['GET'])]
     public function index(AccesPortailRepository $accesPortailRepository): Response
     {
+        $accessPortails = [];
+        foreach($accesPortailRepository->findAll() as $accesPortail) {
+            if($this->isGranted($accesPortail->getRole())) {
+                $accessPortails[] = $accesPortail;
+            }
+        }
+
         return $this->render('acces_portail/index.html.twig', [
-            'acces_portails' => $accesPortailRepository->findAll(),
+            'acces_portails' => $accessPortails,
         ]);
     }
 
