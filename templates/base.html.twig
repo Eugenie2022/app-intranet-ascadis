@@ -20,13 +20,16 @@
             <div class="container">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                     <a class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none" href="#">
-                        <img class="bi me-2" width="100" src="uploads/border-grey.png" alt="logo-ascadis">
+                        <img class="bi me-2" width="100" src="/uploads/border-grey.png" alt="logo-ascadis">
                     </a>
                     <ul class="nav nav-pills ">
                         <li class="nav-item marge"><a href="{{ path('home') }}" class="btn btn-secondary rounded-pill padd">Accueil</a></li>
-                        <li class="nav-item marge"><a href="{{ path('app_login') }}" class="btn btn-secondary rounded-pill padd">Connexion</a></li>
-                        <li class="nav-item marge"><a href="{{ path('app_register') }}" class="btn btn-secondary rounded-pill padd">Inscription</a></li>
-                        <li class="nav-item marge"><a href="#" class="btn btn-secondary rounded-pill padd">Portail</a></li>
+                        {% if app.user %}
+                            <li class="nav-item marge"><a href="{{ path('app_logout') }}" class="btn btn-secondary rounded-pill padd">Se déconnecter</a></li>
+                            <li class="nav-item marge"><a href="{{ path('app_acces_portail_index') }}" class="btn btn-secondary rounded-pill padd">Portail</a></li>
+                        {% else %}
+                            <li class="nav-item marge"><a href="{{ path('app_login') }}" class="btn btn-secondary rounded-pill padd">Connexion</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
