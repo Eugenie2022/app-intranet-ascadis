@@ -1,3 +1,18 @@
+@import "bootstrap";
+@import "fontawesome-4.7";
+
 body {
-    background-color: lightgray;
+    background-color: white;
+}
+
+.table-bordered {
+
+}
+
+caption {
+    text-align: center;
+}
+
+.fa-star-o {
+    color: goldenrod;
 }
