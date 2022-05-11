@@ -16,3 +16,15 @@ caption {
 .fa-star-o {
     color: goldenrod;
 }
+
+.bg-blue {
+    background-color: #2771A5;
+}
+
+.marge {
+    margin: 0.5rem;
+}
+
+.padd {
+    padding: 1rem 2rem;
+}
