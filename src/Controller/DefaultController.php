@@ -16,7 +16,6 @@ class DefaultController extends AbstractController
     {
         $favoris = $doctrine->getRepository(Favoris::class)->findAll();
 
-
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',
             'favoris' => $favoris,

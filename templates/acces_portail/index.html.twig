@@ -3,39 +3,41 @@
 {% block title %}AccesPortail index{% endblock %}
 
 {% block body %}
-    <h1>AccesPortail index</h1>
+    <div class="container">
+        <h1>Mot de Passe Partagés</h1>
 
-    <table class="table">
-        <thead>
+        <table class="table">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Login</th>
-                <th>Password</th>
-                <th>Description</th>
-                <th>actions</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Login</th>
+                <th scope="col">Password</th>
+                <th scope="col">Description</th>
+                <th scope="col">actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for acces_portail in acces_portails %}
-            <tr>
-                <td>{{ acces_portail.id }}</td>
-                <td>{{ acces_portail.nom }}</td>
-                <td>{{ acces_portail.login }}</td>
-                <td>{{ acces_portail.password }}</td>
-                <td>{{ acces_portail.description }}</td>
-                <td>
-                    <a href="{{ path('app_acces_portail_show', {'id': acces_portail.id}) }}">show</a>
-                    <a href="{{ path('app_acces_portail_edit', {'id': acces_portail.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% if acces_portails %}
+                {% for acces_portail in acces_portails %}
+                    <tr>
+                        <td>{{ acces_portail.nom }}</td>
+                        <td>{{ acces_portail.login }}</td>
+                        <td>{{ acces_portail.password }}</td>
+                        <td>{{ acces_portail.description }}</td>
+                        <td>
+                            <a href="{{ path('app_acces_portail_show', {'id': acces_portail.id}) }}">voir</a>
+                            <a href="{{ path('app_acces_portail_edit', {'id': acces_portail.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="row">Aucun mot de passe partagés</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
 
     <a href="{{ path('app_acces_portail_new') }}">Create new</a>
 {% endblock %}
