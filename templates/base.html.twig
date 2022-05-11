@@ -16,17 +16,17 @@
         {% endblock %}
     </head>
     <header>
-        <div class="px-3 py-2 bg text-white">
+        <div class="px-3 py-2 bg-blue text-white">
             <div class="container">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                     <a class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none" href="#">
                         <img class="bi me-2" width="100" src="uploads/border-grey.png" alt="logo-ascadis">
                     </a>
                     <ul class="nav nav-pills ">
-                        <li class="nav-item marge"><a href="#" class="btn btn-secondary rounded-pill padd">Accueil</a></li>
-                        <li class="nav-item marge"><a href="#" class="btn btn-secondary rounded-pill padd">Annuaire</a></li>
-                        <li class="nav-item marge"><a href="#" class="btn btn-secondary rounded-pill padd">Fournisseurs</a></li>
-                        <li class="nav-item marge"><a href="#" class="btn btn-secondary rounded-pill padd">Clients</a></li>
+                        <li class="nav-item marge"><a href="{{ path('home') }}" class="btn btn-secondary rounded-pill padd">Accueil</a></li>
+                        <li class="nav-item marge"><a href="{{ path('app_login') }}" class="btn btn-secondary rounded-pill padd">Connexion</a></li>
+                        <li class="nav-item marge"><a href="{{ path('app_register') }}" class="btn btn-secondary rounded-pill padd">Inscription</a></li>
+                        <li class="nav-item marge"><a href="#" class="btn btn-secondary rounded-pill padd">Portail</a></li>
                     </ul>
                 </div>
             </div>
