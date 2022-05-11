@@ -1,35 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Favoris{% endblock %}
-    {% block body %}
+{% block body %}
 
-        <div class="container">
-            <table class="table table-bordered caption-top rounded-circle">
-                <thead>
-                <caption>
-                    Mes favoris
-                    <i class="fa fa-star-o"></i>
-                </caption>
+    <div class="container">
+        <table class="table table-bordered caption-top rounded-circle">
+            <thead>
+            <caption>
+                Mes favoris
+                <i class="fa fa-star-o"></i>
+            </caption>
+            <tr>
+                <th scope="col">Nom favoris</th>
+                <th scope="col">URL</th>
+            </tr>
+            </thead
+            <tbody>
+            {% if app.user and app.user.favoris != null %}
+                {% for favori in app.user.favoris %}
+                        <tr>
+                            <th scope="row">{{ favori.nom }}</th>
+                            <td><a href="{{ favori.url }}" target="_blank">{{ favori.url }}</a></td>
+                        </tr>
+                {% endfor %}
+            {% else %}
                 <tr>
-                    <th scope="col">Nom favoris</th>
-                    <th scope="col">URL</th>
+                    <th scope="row">Pas de favoris</th>
                 </tr>
-                </thead
-                <tbody>
-                {% if app.user and app.user.favoris != null %}
-                    {% for favori in app.user.favoris %}
-                            <tr>
-                                <th scope="row">{{ favori.nom }}</th>
-                                <td><a href="{{ favori.url }}" target="_blank">{{ favori.url }}</a></td>
-                            </tr>
-                    {% endfor %}
-                {% else %}
-                    <tr>
-                        <th scope="row">Pas de favoris</th>
-                    </tr>
-                {% endif %}
-                </tbody>
-            </table>
-        </div>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
 
-    {% endblock %}
+{% endblock %}
