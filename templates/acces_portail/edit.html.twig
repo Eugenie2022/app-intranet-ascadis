@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit AccesPortail{% endblock %}
+
+{% block body %}
+    <h1>Edit AccesPortail</h1>
+
+    {{ include('acces_portail/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_acces_portail_index') }}">back to list</a>
+
+    {{ include('acces_portail/_delete_form.html.twig') }}
+{% endblock %}

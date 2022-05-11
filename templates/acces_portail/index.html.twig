@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AccesPortail index{% endblock %}
+
+{% block body %}
+    <h1>AccesPortail index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for acces_portail in acces_portails %}
+            <tr>
+                <td>{{ acces_portail.id }}</td>
+                <td>{{ acces_portail.nom }}</td>
+                <td>{{ acces_portail.login }}</td>
+                <td>{{ acces_portail.password }}</td>
+                <td>{{ acces_portail.description }}</td>
+                <td>
+                    <a href="{{ path('app_acces_portail_show', {'id': acces_portail.id}) }}">show</a>
+                    <a href="{{ path('app_acces_portail_edit', {'id': acces_portail.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_acces_portail_new') }}">Create new</a>
+{% endblock %}

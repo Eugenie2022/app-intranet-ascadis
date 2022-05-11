@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AccesPortail{% endblock %}
+
+{% block body %}
+    <h1>AccesPortail</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ acces_portail.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ acces_portail.nom }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ acces_portail.login }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ acces_portail.password }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ acces_portail.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_acces_portail_index') }}">back to list</a>
+
+    <a href="{{ path('app_acces_portail_edit', {'id': acces_portail.id}) }}">edit</a>
+
+    {{ include('acces_portail/_delete_form.html.twig') }}
+{% endblock %}
