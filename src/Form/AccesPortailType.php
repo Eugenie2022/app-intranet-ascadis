@@ -16,7 +16,7 @@ class AccesPortailType extends AbstractType
             ->add('login')
             ->add('password')
             ->add('description')
-            ->add('habilitation')
+
         ;
     }
 
