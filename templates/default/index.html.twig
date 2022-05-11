@@ -14,10 +14,10 @@
                     <th scope="col">Nom favoris</th>
                     <th scope="col">URL</th>
                 </tr>
-                </thead>
+                </thead
                 <tbody>
-                {% if app.user %}
-                    {% for favori in favoris %}
+                {% if app.user and app.user.favoris != null %}
+                    {% for favori in app.user.favoris %}
                             <tr>
                                 <th scope="row">{{ favori.nom }}</th>
                                 <td><a href="{{ favori.url }}" target="_blank">{{ favori.url }}</a></td>
