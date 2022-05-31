@@ -31,8 +31,9 @@ class AccesPortailController extends AbstractController
     #[Route('/new', name: 'app_acces_portail_new', methods: ['GET', 'POST'])]
     public function new(Request $request, AccesPortailRepository $accesPortailRepository): Response
     {
+        $user = $this->getUser()->getRoles();
         $accesPortail = new AccesPortail();
-        $form = $this->createForm(AccesPortailType::class, $accesPortail);
+        $form = $this->createForm(AccesPortailType::class, $accesPortail, ['user' => $user]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,6 +45,7 @@ class AccesPortailController extends AbstractController
         return $this->renderForm('acces_portail/new.html.twig', [
             'acces_portail' => $accesPortail,
             'form' => $form,
+            'user' => $user,
         ]);
     }
 
